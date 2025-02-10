@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fun Fact Generator</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f0f0f0;
+      transition: background-color 0.3s ease;
+    }
+
+    #fun-fact-container {
+      text-align: center;
+      padding: 20px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      transition: all 0.5s ease; /* Subtle transition */
+    }
+
+    #fun-fact {
+      font-size: 1.2em;
+      margin-bottom: 15px;
+    }
+
+    #generate-button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #generate-button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div id="fun-fact-container">
+    <p id="fun-fact">Click the button to generate a fun fact!</p>
+    <button id="generate-button">Generate Another Fun Fact</button>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Array of fun facts
+      const funFacts = [
+        "This person was born in a small town known for its annual cheese festival.",
+        "They once accidentally hiked into a movie set and became an extra.",
+        "Their favorite hobby is collecting vintage stamps from around the world.",
+        "They can play the ukulele, but only know how to play one song.",
+        "This person has a pet parrot that can mimic their laugh perfectly.",
+        "They once won a local pie-eating contest.",
+        "Their dream is to visit every national park in their country.",
+        "They have a hidden talent for solving Rubik's Cubes behind their back.",
+        "This person's first job was as a librarian.",
+        "They once sent a message in a bottle that was actually found 10 years later."
+      ];
+
+      const factElement = document.getElementById('fun-fact');
+      const generateButton = document.getElementById('generate-button');
+      const container = document.getElementById('fun-fact-container');
+
+      function generateFunFact() {
+        factElement.style.opacity = '0'; // Fade out
+        setTimeout(() => {
+          const randomIndex = Math.floor(Math.random() * funFacts.length);
+          factElement.textContent = funFacts[randomIndex];
+          factElement.style.opacity = '1'; // Fade in
+        }, 500); // Wait for fade out
+      }
+
+      generateButton.addEventListener('click', generateFunFact);
+
+      generateFunFact(); // Initial Fun Fact
+    });
+  </script>
+</body>
+</html>
